@@ -16,10 +16,8 @@ import (
 )
 
 func ConvertJSONToObject(filename string) []mode.Data {
-	// path file
 	jsonPath := filepath.Join("./", filename)
 
-	// membaca isi dari file JSON
 	data, err := os.ReadFile(jsonPath)
 	if err != nil {
 		log.Fatal(err)
@@ -27,7 +25,6 @@ func ConvertJSONToObject(filename string) []mode.Data {
 
 	var participants mode.Participants
 
-	// mengubah data json menjadi object
 	if err := json.Unmarshal(data, &participants); err != nil {
 		log.Fatal(err)
 	}
@@ -44,7 +41,6 @@ func main() {
 		participantOfMap[participant.Code] = participant
 	}
 
-	// strings.ToUpper untuk mengubah inputan menjadi huruf besar
 	input := strings.ToUpper(os.Args[1])
 	fmt.Println("=== CARI DATA PESERTA DENGAN KODE PESERTA ===")
 
